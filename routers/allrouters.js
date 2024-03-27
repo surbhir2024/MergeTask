@@ -12,4 +12,7 @@ routes.get('/',(req,res)=>{
 routes.get('/coocube',(req,res)=>{
     res.render('task1/coocube');
 })
+routes.get('/tictactoe',(req,res)=>{
+    res.render('task2/tic_tac_toe');
+})
 module.exports = routes;
