@@ -30,4 +30,7 @@ routes.get('/ehya',(req,res)=>{
 routes.get('/awan',(req,res)=>{
     res.render('task7/awan');
 })
+routes.get('/hirex',(req,res)=>{
+    res.render('task8/hirex');
+})
 module.exports = routes;
