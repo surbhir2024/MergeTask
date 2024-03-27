@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delimiter Search</title>
+    <link rel="stylesheet" href="/task10_data/searchroute.css">
+</head>
+<body onload="studentiddisplay()">
+    <% let value = dataparam%>
+                    <%let inputvalue = ""%>
+                    <% if(value != false){%>
+                        
+                        <%inputvalue = dataparam%>
+                    <%}%>
+    <form method="post">
+        <input type="text" id="searchstudentdata"  name="data"  id="query" tabindex="1" style="height: 40px; width:300px;" value="<%=inputvalue%>" >
+        <input type="submit" name="Search" value="Search" class="button" tabindex="2">
+    </form> 
+    <table border="2">
+        <tr>
+            <td>FirstName</td>
+            <td>%</td>
+        </tr>
+        <tr>
+            <td>LastName</td>
+            <td>^</td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>$</td>
+        </tr>
+        <tr>
+            <td>State</td>
+            <td>{</td>
+        </tr>
+        <tr>
+            <td>Zipcode</td>
+            <td>+</td>
+        </tr>
+        <tr>
+            <td>email</td>
+            <td>-</td>
+        </tr>
+    </table>
+    <table id="customers">
+        <tr>
+           <%for(let i=0;i<fileds.length;i++){%>
+                <th><%= fileds[i].name%></th>
+            <%}%>
+        </tr>
+        <%for(let i=0;i<data.length;i++){%>
+            <tr>
+                <% for(let j=0;j<fileds.length;j++){%>
+                    <td><%=data[i][fileds[j].name]%></td>
+                <%}%>
+            </tr>
+        <%}%>
+    </table>
+</body>
+<script>
+    function studentiddisplay()
+{
+    document.getElementById("searchstudendata").focus();
+}
+</script>
+</html>

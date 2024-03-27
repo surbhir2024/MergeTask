@@ -182,4 +182,121 @@ routes.post('/search',(req,res)=>{
       
     
 })
+
+// delemeter search routes
+
+routes.get('/deleamitersearch', (req, res) => {
+
+    records = process.env.Max_Record;
+    page = req.query.page || 1;
+    max_page = process.env.max_page;
+    sql = `select * from Student_master`;
+    let query = connection.query(sql, (err, data, fileds) => {
+        if (err) throw err;
+        res.render('task10/searchrout', {
+            data: data,
+            crr_page: +page,
+            last_page: max_page,
+            fileds: fileds,
+            dataparam : false
+        })
+        // console.log(data);  
+    })
+
+})
+
+routes.post('/deleamitersearch',(req,res)=>{
+    dataparam = req.body.data;
+
+    // let str = 'afgbfgcfgdfgefg'
+    // let array = str.replace('a','d').replace('b','d').replace('c','d').replace('e','d').split('d');
+    // console.log(array);
+    data1 = dataparam.split(/[%^${+-]+/);
+    dataobj = {Firstname : [],
+        Lastname : [],
+        city : [],
+        state : [],
+        Zipcode : [],
+        email : []
+    }
+    msg = [];
+    var delimeters2 = [];
+    var arr3 = [];
+
+
+    var delemeters = ["%","^","$","{","+","-"];
+    for(var j=0;j<dataparam.length;j++)
+    {
+        if(delemeters.includes(dataparam[j]))
+        {
+            delimeters2.push(dataparam[j]);
+        }
+    }
+    console.log(delimeters2);
+
+
+    for(var i=1;i<data1.length;i++)
+    {
+       arr3.push(delimeters2[i-1].concat(data1[i]));
+    }
+    console.log(arr3);
+    
+    for(var j=0;j<arr3.length;j++)
+    {
+       if(arr3[j][0] == "%")
+       {
+            dataobj.Firstname.push(arr3[j])
+       } 
+       else if(arr3[j][0] == "^")
+       {
+            dataobj.Lastname.push(arr3[j]) 
+       }
+       else if(arr3[j][0] == "$")
+       {
+            dataobj.city.push(arr3[j])
+       }
+       else if(arr3[j][0] == "{")
+       {
+            dataobj.state.push(arr3[j])
+       }
+       else if(arr3[j][0] == "+")
+       {
+            dataobj.Zipcode.push(arr3[j])
+       }
+       else if(arr3[j][0] == "-")
+       {
+            dataobj.email.push(arr3[j])
+       }
+       else
+       {
+            msg += "data wrong"
+       }
+
+    }
+    console.log(dataobj);
+
+    // console.log(daFirstname);
+    // console.log(Lastname);
+    // console.log(city);
+    // console.log(state);
+    // console.log(Zipcode);
+    // console.log(email);
+    
+
+    sql = `select * from Student_master where FirstName like '%${dataobj.Firstname.join("%' or FirstName like '%").substring(1)}%'
+    and LastName like '%${dataobj.Lastname.join("%' or Lastname like '%").substring(1)}%' and 
+    City like '%${dataobj.city.join("%'or Lastname like '%").substring(1)}%' and State like '%${dataobj.state.join("%' or Lastname like '%").substring(1)}%' and 
+    Zipcode like '%${dataobj.Zipcode.join("%' or Lastname like '%").substring(1)}%' and Email like '%${dataobj.email.join("%' or Lastname like '%").substring(1)}%'`;
+    console.log(sql);
+    let query = connection.query(sql, (err, data, fileds) => {
+        if (err) throw err;
+        console.log(data);
+        res.render('task10/searchrout', {
+            data: data,
+            fileds: fileds,
+            dataparam:dataparam
+        })
+        // console.log(data);  
+    })
+})
 module.exports = routes;
