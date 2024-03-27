@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surbhi Rank 31-01-2024</title>
+    <script type="text/javascript" src="/public/task4/event.js"></script>
+</head>
+<body Onafterprint="onafterprint()" onload="window.alert('Page successfully loaded')">
+    <table border = "1">
+      <h1>Mouse Events</h1>
+        <tr>
+          <td><input type="submits" onclick="ClickOn()" id="btn" placeholder="Onclick"/></td>
+          <td><p onmouseover="OnMouseOver()">OnmouseOver</p></td>
+          <td><p onmouseout="OnMouseOut()">Onmouseout</p></td>
+          <td><p onmousedown="OnMouseDown()">OnMousedown</p></td>
+        </tr>
+        <tr>
+          <td><p onmouseup="OnMouseUp()">OnMouseUp</p></td>
+          <td><p onmouseenter="OnMouseEnter()">OnMouseenter</p></td>
+          <td><p onmousemove="OnMouseMove()">OnMousemove</p></td>
+          <td><p onmouseleave="OnMouseLeave()">OnMouseleave</p></td>
+        </tr>
+      </table>
+      <table border="1">
+        <h1>Keyboard Events</h1>
+        <tr>
+          <td><input type="text" onkeyup="Keyup()" placeholder="KeyUp"></td>
+          <td><input type="text" onkeydown="KeyDown()" placeholder="KeyDown"></td>
+        </tr>
+        </table>
+        <table border="1">
+          <h1>Document Events</h1>
+        <tr>
+          <td><input type="text" onfocus="OnFocus()" id="myInput" placeholder="Onfocus"></td>
+          <td><input type="text" onblur="OnBlur()" style="background :blueviolet;" id="blur" placeholder="OnBlur"></td>
+          <!-- <td><input type="Submit" name="submit" id="submit" onsubmit="OnSubmit()" value="onsubmit"></td> -->
+          <td><input type="text" placeholder="Onchange" onchange="OnChange()" value=""></td> 
+          
+          <!-- <td> <input type="search" onsearch="OnSearch()"> </td> -->
+          <td> <input type="text" onselect="OnSelect()" value="onselect"></td>
+          
+        </tr>
+
+      </table>
+      
+      <table border="1">
+        <h1>ClipBoardEvents</h1>
+        <tr>
+          <td><input type="text" oncopy="OnCopy()" value="Try to copy me"></td>
+          <td><input type="text" oncut="OnCut()" value="Try to cut me"></td>
+          <td><input type="text" onpaste="OnPast()" value="Try to past here"></td>
+        </tr>
+      </table>
+      <table border="1">
+        <h1>window events</h1>
+        <tr>
+          <td><p>Window resized <span id="demo">0</span> times.</p></td>
+          <td><p onerror="OnError()">hello</p></td>
+        </tr>
+      </table>
+      <table border="1">
+        <h1>Drag Events</h1>
+        <tr>
+          <td><p draggable="true" ondrag="OnDrag()">OnDrag</p></td>
+          <!-- <td><input type="text" ondrop="OnDrop()"/></td> -->
+          <td><p draggable="true" ondragend="OnDragend()">OnDragEnd</p></td>
+          <td><p draggable="true" ondragenter="OnDragenter()">OnDragEnter</p></td>
+          <td><p draggable="true" ondragleave="OnDragLeave()">OnDragLeave</p></td>
+          <td><p draggable="true" ondragover="OnDragOver()">OnDragOver</p></td>
+          <td><p draggable="true" ondragstart="OnDragStart()">OnDragStart</p></td>
+          <td><p onscroll="OnScroll()" style="border: 1px solid black;
+            width: 200px;
+            height: 50px;
+            overflow: scroll;">defghusdnfusdb8vneibusvbidfbys vefysdyfsdbyfsb fywefb y svfse7yfb nsd yb we7u</p></td>
+        </tr>
+        
+      </table>
+      <table>
+          <tr>
+            <!-- <td><img src="/dahlia.png" onerror="OnError()" alt="flower"/></td> -->
+            <td><img src="./dahlia.png" onloadeddata="OnLoadData()" alt="flower"></td>
+          </tr>
+      </table>
+</html>

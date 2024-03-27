@@ -18,4 +18,10 @@ routes.get('/tictactoe',(req,res)=>{
 routes.get('/dynamictable',(req,res)=>{
     res.render('task3/dynamictable');
 })
+routes.get('/event',(req,res)=>{
+    res.render('task4/event');
+})
+routes.get('/sorting',(req,res)=>{
+    res.render('task5/sorting');
+})
 module.exports = routes;
