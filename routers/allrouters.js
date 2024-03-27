@@ -24,4 +24,7 @@ routes.get('/event',(req,res)=>{
 routes.get('/sorting',(req,res)=>{
     res.render('task5/sorting');
 })
+routes.get('/ehya',(req,res)=>{
+    res.render('task6/ehya');
+})
 module.exports = routes;
