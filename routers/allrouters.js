@@ -15,4 +15,7 @@ routes.get('/coocube',(req,res)=>{
 routes.get('/tictactoe',(req,res)=>{
     res.render('task2/tic_tac_toe');
 })
+routes.get('/dynamictable',(req,res)=>{
+    res.render('task3/dynamictable');
+})
 module.exports = routes;

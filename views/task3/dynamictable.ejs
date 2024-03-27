@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surbhi-Rank-01-02-2024</title>
+    <style>
+        table{
+            border: 1px solid black;
+        }
+        tr{
+            height: 100px;
+            width: 100px;
+        }
+        td{
+            background-image: radial-gradient(rgb(192, 201, 255),rgb(25, 0, 255));
+            height: 100px;
+            width: 100px;
+        }
+        tr:nth-child(odd) td:nth-child(odd),tr:nth-child(even) td:nth-child(even){
+         background-image: linear-gradient(30deg, aquamarine , yellow) !important;
+}
+button {
+  background-image: radial-gradient(rgb(255, 127, 197),rgb(208, 127, 255)); 
+  border: none;
+  border-radius: 5%;
+  color: rgb(15, 14, 14);
+  padding: 10px 32px;
+  text-align: center;
+  text-decoration: wavy;
+  display: inline-block;
+  font-size: 16px;
+}
+    </style>
+</head>
+<body>
+    <center>
+    <table id="tableid">
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+      </table>
+      
+      
+     <button type="button" onclick="myFunction()">
+        Add Row
+    </button>
+    <button type="button" onclick="removeRow()">
+       Delete Row
+    </button>
+    <button type="button" onclick="AddColumn()">add column</button>
+     <button type="button" onclick="RemoveColumn()">
+        Delete Column
+     </button> 
+     <center>
+    
+    <script>
+             function myFunction() {
+                table =document.getElementById('tableid');
+                var row = table.rows.length;
+                var cell = table.rows[row-1].cells.length;
+                 var insertrow = table.insertRow(-1);
+
+                 for(var i=0;i<cell;i++)
+                 {
+                    insertrow.insertCell(i);
+                 }
+                alert("row inserted");
+                }
+                function removeRow() {
+                    table =document.getElementById('tableid');
+                    var row = table.rows.length;
+                    if(row>2){
+                        if(confirm("Are you Sure"))
+                        {
+                            table.deleteRow(row-1); 
+                            alert("ROW DELETED"); 
+                        }
+
+                    }
+                   
+                }
+                
+           function AddColumn()
+           {
+                table =document.getElementById('tableid');
+                var row = table.rows.length;
+                var cell = table.rows[row-1].cells.length;
+                var rows = document.getElementsByTagName('tr');
+                for(var i=0;i<rows.length;i++)
+                {
+                    rows[i].insertCell(-1);
+                }
+                alert("Columns are inserted");
+           }
+           function RemoveColumn()
+           {
+                table =document.getElementById('tableid');
+                var row = table.rows.length;
+                var cell = table.rows[row-1].cells.length;
+                var rows = document.getElementsByTagName('tr');
+                if(rows[0].cells.length>2){
+                    for(var i=0;i<rows.length;i++)
+                    {
+                        rows[i].deleteCell(-1);
+                    }   
+                    alert("Columns are deleted");
+
+                }
+                
+           }
+    
+
+                
+
+       
+    </script>
+</body>
+</html>
