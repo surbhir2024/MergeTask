@@ -1,0 +1,37 @@
+#comments , #Searchdata{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin: auto;
+  }
+  
+  #comments td, #comments th ,#Searchdata td ,#Searchdata th{
+    border: 1px solid #ddd;
+    padding: 1px;
+    
+  }
+  
+  #comments tr:nth-child(even),#Searchdata tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #comments tr:hover {background-color: #ddd;}
+  
+  #comments th , #Searchdata th{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: black;
+    color: white;
+  }
+  .button {
+    background-color: black;
+    /* Green */
+    border: none;
+    border-radius: 5px;
+    width: fit-content;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}

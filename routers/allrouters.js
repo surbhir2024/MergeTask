@@ -355,4 +355,13 @@ routes.get('/orderby',(req,res)=>{
             })
         })
 }) 
+
+//jsonapi routes
+routes.get('/post',(req,res)=>{
+    res.render('task12/post');
+})
+
+routes.get('/post/comment',(req,res)=>{
+    res.render('task12/comment');
+})
 module.exports = routes;

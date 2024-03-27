@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <link rel="stylesheet" href="/task12_data/post.css">
+</head>
+
+<body>
+    <h2>Surbhi Rank</h2>
+    <form method="get">
+        <input type="text" id="searchdata" name="data" id="query" tabindex="1"
+            oninput="search(this)">
+        <!-- <input type="submit" name="Search" value="Search" class="button" tabindex="2"> -->
+    </form>
+    <div id="posts"></div>
+    <div id="pagination" class="pagination"></div>
+    <div id="postdetailmodel" class="modal">
+        <div class="modal-content">
+
+            <div id="postdetails"></div>
+        </div>
+    </div>
+</body>
+<script>
+    const API_URL = 'https://jsonplaceholder.typicode.com/posts';
+    const postperpage = 10;
+    let currentpage = 1;
+    let posts = [];
+
+    async function fetchPosts() {
+        const response = await fetch(API_URL);
+        posts = await response.json();
+        displayPosts();
+        // console.log(posts);
+
+    }
+    // fetchPosts();
+    function displayPosts() {
+        const startIndex = (currentpage - 1) * postperpage;
+        const endIndex = startIndex + postperpage;
+        const Paginatedposts = posts.slice(startIndex, endIndex);
+
+        const postcontainer = document.getElementById('posts');
+
+        postcontainer.innerHTML = ``;
+        const headingrw = document.createElement('tr');
+        headingrw.innerHTML = `<th>ID</th>
+                                <th>Title</th>
+                                <th>Body</th>
+                                <th>View</th>`;
+
+        postcontainer.appendChild(headingrw);
+
+        Paginatedposts.forEach(post => {
+            const row = document.createElement('tr');
+
+            row.innerHTML = `<td>${post.id}</td>
+                            <td>${post.title}</td>
+                            <td>${post.body}</td>
+                            <td><button onclick = "showDetails(${post.id})" class = "button"> View </td>`;
+            postcontainer.appendChild(row);
+        });
+        displaypagination();
+    }
+
+    function displaypagination() {
+        // console.log(posts.length);
+        var totalpages = Math.ceil(posts.length / postperpage);
+        const paginationcontainer = document.getElementById('pagination');
+
+        paginationcontainer.innerHTML = ``;
+
+        for (let i = 1; i <= totalpages; i++) {
+            const btn = document.createElement('button');
+            btn.innerText = i;
+
+            btn.addEventListener('click', () => {
+                currentpage = i;
+                displayPosts();
+            });
+            if (i === currentpage) {
+                btn.classList.add('active');
+            }
+            paginationcontainer.appendChild(btn)
+        }
+
+    }
+
+    function showDetails(postid) {
+        const post = posts.find(p => p.id === postid)
+
+        const model = document.getElementById('postdetailmodel');
+        const modalcontent = document.getElementById('postdetails');
+
+        modalcontent.innerHTML = `<div class="onepostdetail">
+                                        <h2>Post Details</h2>
+                                        <p>ID: ${post.id}<p>
+                                        <p>Title : ${post.title}</p>
+                                        <p>Body:${post.body}</p>
+                                        </div>  <a href="/post/comment?postid=${post.id}" class = "button">view Comments</a>`;
+        model.style.display = 'block';
+
+    }
+
+function search(input) {
+        if(input.value == " "){
+            alert("please enter data to search")
+        }
+        else
+        {
+        const spaceregex = /\s/;
+        const postcontainer = document.getElementById('posts');
+       
+        postcontainer.innerHTML = ``;
+        const headingrw = document.createElement('tr');
+        headingrw.innerHTML = `<th>ID</th>
+                        <th>Title</th>
+                        <th>Body</th>
+                        <th>View</th>`;
+
+        postcontainer.appendChild(headingrw);
+        posts.forEach(post => {
+            if (input.value == post.id || input.value == post.title || input.value == post.body) {
+                // console.log(post.id);
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${post.id}</td>
+                            <td>${post.title}</td>
+                            <td>${post.body}</td>
+                            <td><button onclick = "showDetails(${post.id})" class = "button"> View </td>`;
+                postcontainer.appendChild(row);
+            }
+           
+        });
+        }
+        
+  
+
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchPosts();
+    })
+
+</script>
+
+</html>
+

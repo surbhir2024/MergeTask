@@ -1,0 +1,54 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+}
+th,td{
+    padding: 8px;
+    text-align: lext;
+    border-bottom: 1px solid #ddd;
+}
+input{
+    width: 80%;
+    height: 30px;
+    margin:20px;
+}
+th{
+    background-color: black;
+    color: white;
+}
+tr:hover{
+    background-color: #f2f2f2;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.pagination button{
+    margin: 0 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+}
+.pagination button.active{
+    background-color: #4CAF50;
+    color: white;
+}
+.button {
+    background-color: black;
+    /* Green */
+    border: none;
+    border-radius: 5px;
+    width: fit-content;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.onepostdetail{
+    background-color: black;
+    color: white;
+}
