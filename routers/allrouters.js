@@ -27,4 +27,7 @@ routes.get('/sorting',(req,res)=>{
 routes.get('/ehya',(req,res)=>{
     res.render('task6/ehya');
 })
+routes.get('/awan',(req,res)=>{
+    res.render('task7/awan');
+})
 module.exports = routes;
