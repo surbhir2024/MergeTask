@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic grid</title>
+    <link rel="stylesheet" href="/dynamic.css">
+</head>
+<body>
+   <h1>Surbhi Rank</h1>
+    <section class="dynamiccontainer">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <% let value = query%>
+                    <%let inputvalue = ""%>
+                    <% if(value != false){%>
+                        
+                        <%inputvalue = query%>
+                    <%}%>
+                    
+                        <form action="/form" method="POST">
+                            <input type="text" name="query" placeholder="Enter your query" id="query" value="<%=inputvalue%>">
+                            <input type="submit" value="Search" name="Go" class="button"/>
+                        </form> 
+                </div>
+            </div>
+           
+            <%if(fileds){%>
+                <%- include("./pagignation") %>
+                <table id="customers">
+                    <tr>
+                       <%for(let i=0;i<fileds.length;i++){%>
+                            <th><%= fileds[i].name%></th>
+                        <%}%>
+                    </tr>
+                    <%for(let i=0;i<data.length;i++){%>
+                        <tr>
+                            <% for(let j=0;j<fileds.length;j++){%>
+                                <td><%=data[i][fileds[j].name]%></td>
+                            <%}%>
+                        </tr>
+                    <%}%>
+                </table>
+            <%} %>
+            
+        </div>
+    </section>
+</body>
+</html>

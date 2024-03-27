@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Operations</title>
+    <link rel="stylesheet" href="/task9_data/dynamic.css">
+    <link rel="stylesheet" href="/task9_data/pagignation.css">
+</head>
+<body onload="studentiddisplay()">
+    <h1>Surbhi Rank</h1>
+    <section class="dynamiccontainer">
+        
+           
+                    
+                        <form method="post">
+                            <input type="text" id="searchstudentid"  name="stu_id" placeholder="Enter User id" id="query" tabindex="1">
+                            <input type="submit" name="Search" value="Search" class="button" tabindex="2">
+                        </form> 
+                        <button onclick="Searchmore()" name="Search" class="button">SearchMore</button>
+                            <div id="moresearch" class="pop-up">
+                                <form  method="post">
+                                    <label for="fname" class="searchmore_item_view">FirstName:</label>
+                                    <input type="text" name="fname" placeholder="FirstName" tabindex="4" >
+                                    <label for="lname" class="searchmore_item_view">LastName:</label>
+                                    <input type="text" name="lname" placeholder="LastName" tabindex="5" >
+                                    <label for="lname" class="searchmore_item_view">City:</label>
+                                    <input type="text" name="city" placeholder="City" tabindex="6">
+                                    <label for="lname" class="searchmore_item_view">State:</label>
+                                    <input type="text" name="state" placeholder="State" tabindex="7">
+                                    <label for="lname" class="searchmore_item_view">Date of birth:</label>
+                                    <input type="text" name="dob" placeholder="Date of birth" tabindex="8">
+                                    <input type="submit" name="SearchMore" value="Search" class="button" tabindex="9">
+                                </form>
+                              
+                            </div>
+                           
+                        
+                        
+                
+        
+        
+    <%if(data != false){%>
+        <table id="customers">
+            <tr>
+               <%for(let i=0;i<fileds.length;i++){%>
+                    <th><%= fileds[i].name%></th>
+                <%}%>
+            </tr>
+            <%for(let i=0;i<data.length;i++){%>
+                <tr>
+                    <% for(let j=0;j<fileds.length;j++){%>
+                        <td><%=data[i][fileds[j].name]%></td>
+                    <%}%>
+                </tr>
+            <%}%>
+        </table>
+    <%}else{%>
+        <center>
+            <img src="/images/abc.png" alt="">
+            <p style="color: red; font-weight: bolder; font-size:x-large;">Data Not Founds!!!</p> 
+        </center>
+        
+    <%} %>
+
+   
+</section>
+            <%if(data.length >19){%>
+                <div class="container">
+                    <div class="row">
+                        <a href="task9/search?page=1"><<</a>
+                        <% if(crr_page == 1){ %>
+                           <a href="task9/search?page=<%= crr_page - 1%>" class="disable"><</a>
+                           <% } else { %>
+                               <a href="task9/search?page=<%= crr_page - 1%>"><</a>
+                                <% } %>
+           
+           
+                                 <a href="task9/search?page=<%= crr_page%>"><div class="pagenumber"><%= crr_page%></div></a>
+                                 
+           
+                            <% if(crr_page == last_page){ %>
+                                <!-- <a href="/component?page=<%= crr_page+1%>"><div class="pagenumber" style="display: none;"><%= crr_page +1%></div></a>
+                                 <a href="/component?page=<%= crr_page+2%>"><div class="pagenumber" style="display: none;"><%= crr_page +2%></div></a> -->
+                                 <a href="task9/search?page=<%= crr_page + 1%>" class="disable">></a>
+                                
+                                <% } else { %>
+                                    <!-- <a href="/component?page=<%= crr_page+1%>"><div class="pagenumber"><%= crr_page +1%></div></a>
+                                    <a href="/component?page=<%= crr_page+2%>"><div class="pagenumber"><%= crr_page +2%></div></a> -->
+                                    <a href="task9/search?page=<%= crr_page + 1%>">></a>
+                                  
+                           <% } %>
+                                                   
+           
+                                <a href="task9/search?page=<%= last_page %>">>></a>
+           
+                    </div>
+           </div>
+         
+            <%}%>
+             
+       
+       
+</body>
+<script>
+function studentiddisplay()
+{
+    document.getElementById("searchstudentid").focus();
+}
+function Searchmore()
+{
+    var viewmore = document.getElementById("moresearch");
+    if(viewmore.style.display != 'none')
+    {
+        viewmore.style.display = 'none';
+    }
+    else
+    {
+        viewmore.style.display = 'block'; 
+    }
+}
+</script>
+</html>

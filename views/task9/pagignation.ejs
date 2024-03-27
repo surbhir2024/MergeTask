@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <a href="<% crr_page_url%>?page=1"><<</a>
+                <% if(crr_page==1){ %>
+                    <a href="<% crr_page_url%>?page=<%= crr_page - 1%>&query=<%=query%>" class="disable"> &nbsp; < &nbsp;</a>
+                            <% } else { %>
+                                <a href="<% crr_page_url%>?page=<%= crr_page - 1%>&query=<%=query%>">&nbsp;>&nbsp;</a>
+                                <% } %>
+                                    <a href="<% crr_page_url%>?page=<%= crr_page%>&query=<%=query%>"><%= crr_page%></a>
+                                    <% if(crr_page  ==1){ %>
+                                        <a href="<% crr_page_url%>?page=<%= crr_page + 1%>&query=<%=query%>"
+                                            class="disable">&nbsp;>&nbsp;</a>
+                                        <% } else { %>
+                                            <a href="<% crr_page_url%>?page=<%= crr_page + 1%>&query=<%=query%>">&nbsp;>&nbsp;</a>
+                                            <% } %>
+                                                <a href="<% crr_page_url%>?page=20&query=<%=query%>">&nbsp;>>&nbsp;</a>
+
+    </div>
+</div>
