@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagignation Components</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+
+    .container {
+        height: 70px;
+        background-color: #04AA6D;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .col {
+        width: 25%;
+    }
+
+    .col2 {
+        width: 50%;
+    }
+
+    .col3 {
+        width: 25%;
+    }
+
+    a {
+        margin: 10px;
+        text-decoration: none;
+    }
+
+    .disable {
+        pointer-events: none;
+        cursor: none;
+    }
+    .pagenumber{
+        height: 30px;
+        width: 70px;
+        background-color: yellow;
+        padding: 5px;
+    }
+</style>
+
+<body>
+
+    <table id="customers">
+
+        <tr>
+            <th><a href="/orderby/?page=1&fieldname=student_id">StudentId</a></th>
+           <th> <a href="/orderby/?page=1&fieldname=FirstName">FirstName</a></th>
+            <th><a href="/orderby/?page=1&fieldname=LastName">LastName</a></th>
+            <th><a href="/orderby/?page=1&fieldname=Email">Email</a></th>
+            <th><a href="/orderby/?page=1&fieldname=PhoneNo">PhoneNo</a></th>
+            <th><a href="/orderby/?page=1&fieldname=Address1">Address1</a></th>
+            <th><a href="/orderby/?page=1&fieldname=Address2">Address2</a></th>
+            <th><a href="/orderby/?page=1&fieldname=City">City</a></th>
+            <th><a href="/orderby/?page=1&fieldname=State">State</a></th>
+            <th><a href="/orderby/?page=1&fieldname=Gender">Gender</a></th>
+            <th><a href="/orderby/?page=1&fieldname=Zipcode">Zipcode</a></th>
+            <th><a href="/orderby/?page=1&fieldname=RelationshipStatus">RelationshipStatus</a></th>
+        </tr>
+        <%for(let i=0;i<student_data.length;i++){%>
+            <tr>
+                <td>
+                    <%= student_data[i].student_id %></a>
+                </td>
+                <td>
+                    <%= student_data[i].FirstName %>
+                </td>
+                <td>
+                    <%= student_data[i].LastName %>
+                </td>
+                <td>
+                    <%= student_data[i].Email %>
+                </td>
+                <td>
+                    <%= student_data[i].PhoneNo %>
+                </td>
+                <td>
+                    <%= student_data[i].Address1 %>
+                </td>
+                <td>
+                    <%=student_data[i].Address2 %>
+                </td>
+                <td>
+                    <%= student_data[i].City %>
+                </td>
+                <td>
+                    <%= student_data[i].State %>
+                </td>
+                <td>
+                    <%= student_data[i].Gender %>
+                </td>
+                <td>
+                    <%=student_data[i].Zipcode %>
+                </td>
+                <td>
+                    <%= student_data[i].RelationshipStatus %>
+                </td>
+            </tr>
+        <%}%>
+
+    </table>
+
+    <div class="container">
+        <div class="row">
+            <a href="/orderby/?page=1&fieldname=<%=fieldname%>"><<</a>
+            <% if(crr_page == 1){ %>
+                <a href="/orderby/?page=<%= crr_page - 1%>&fieldname=<%=fieldname%>" class="disable"><</a>
+                <% } else { %>
+                    <a href="/orderby/?page=<%= crr_page - 1%>&fieldname=<%=fieldname%>"><</a>
+                    <% } %>
+
+
+                      <a href="/orderby/?page=<%= crr_page%>&fieldname=<%=fieldname%>"><div class="pagenumber"><%= crr_page%></div></a>
+                      
+
+                <% if(crr_page == last_page){ %>
+
+                     <a href="/orderby/?page=<%= crr_page + 1%>&fieldname=<%=fieldname%>" class="disable">></a>
+                     
+                    <% } else { %>
+                        <a href="/orderby/?page=<%= crr_page + 1%>&fieldname=<%=fieldname%>">></a>
+                       
+                <% } %>
+                                        
+
+                    <a href="/orderby/?page=<%= last_page %>&fieldname=<%=fieldname%>">>></a>
+
+        </div>
+    </div>
+
+    
+</body>
+
+</html>

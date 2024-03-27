@@ -8,6 +8,8 @@ const app = express();
 require('dotenv').config();
 
 const dynamic = require('./routers/allrouters.js');
+// const pagignation = require('./pagignation/routers/pagignationroute.js')
+// app.use(pagignation)
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

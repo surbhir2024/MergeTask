@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/student_view.css">
+    <title>Student_Data</title>
+</head>
+<style>
+    #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+</style>
+
+<body>
+   
+    <table id="customers">
+        <caption style="font-size: large;">Student_Data</caption>
+        <tr>
+            <th>StudentId</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>PhoneNo</th>
+            <th>Address1</th>
+            <th>Address2</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Gender</th>
+            <th>Zipcode</th>
+            <th>RelationshipStatus</th>
+        </tr>
+        <% for( let index=0; index <  student_data.length; index++ ) { %>
+            <tr>
+                <td><%= student_data[index].student_id %></td>
+                <td><%= student_data[index].FirstName %></td>
+                <td><%= student_data[index].LastName %></td>
+                <td><%= student_data[index].Email %></td>
+                <td><%= student_data[index].PhoneNo %></td>
+                <td><%= student_data[index].Address1 %></td>
+                <td><%=student_data[index].Address2 %></td>
+                <td><%= student_data[index].City %></td>
+                <td><%= student_data[index].State %></td>
+                <td><%= student_data[index].Gender %></td>
+                <td><%=student_data[index].Zipcode %></td>
+                <td><%= student_data[index].RelationshipStatus %></td>
+            </tr>
+
+            <% } %>
+
+    </table>
+
+
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagignation Components</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+    #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+
+    .container {
+        height: 70px;
+        background-color: #04AA6D;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .col {
+        width: 25%;
+    }
+
+    .col2 {
+        width: 50%;
+    }
+
+    .col3 {
+        width: 25%;
+    }
+
+    a {
+        margin: 10px;
+        text-decoration: none;
+    }
+
+    .disable {
+        pointer-events: none;
+        cursor: none;
+    }
+    .pagenumber{
+        height: 30px;
+        width: 70px;
+        background-color: yellow;
+        padding: 5px;
+    }
+</style>
+
+<body>
+
+    <table id="customers">
+       
+        <tr>
+            <th>StudentId</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>PhoneNo</th>
+            <th>Address1</th>
+            <th>Address2</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Gender</th>
+            <th>Zipcode</th>
+            <th>RelationshipStatus</th>
+        </tr>
+        <% for( let index=0; index < student_data.length; index++ ) { %>
+            <tr>
+                <td>
+                    <%= student_data[index].student_id %>
+                </td>
+                <td>
+                    <%= student_data[index].FirstName %>
+                </td>
+                <td>
+                    <%= student_data[index].LastName %>
+                </td>
+                <td>
+                    <%= student_data[index].Email %>
+                </td>
+                <td>
+                    <%= student_data[index].PhoneNo %>
+                </td>
+                <td>
+                    <%= student_data[index].Address1 %>
+                </td>
+                <td>
+                    <%=student_data[index].Address2 %>
+                </td>
+                <td>
+                    <%= student_data[index].City %>
+                </td>
+                <td>
+                    <%= student_data[index].State %>
+                </td>
+                <td>
+                    <%= student_data[index].Gender %>
+                </td>
+                <td>
+                    <%=student_data[index].Zipcode %>
+                </td>
+                <td>
+                    <%= student_data[index].RelationshipStatus %>
+                </td>
+            </tr>
+
+            <% } %>
+
+    </table>
+
+    <div class="container">
+        <div class="row">
+            <a href="/component?page=1"><<</a>
+            <% if(crr_page == 1){ %>
+                <a href="/component?page=<%= crr_page - 1%>" class="disable"><</a>
+                <% } else { %>
+                    <a href="/component?page=<%= crr_page - 1%>"><</a>
+                    <% } %>
+
+
+                      <a href="/component?page=<%= crr_page%>"><div class="pagenumber"><%= crr_page%></div></a>
+                      
+
+                <% if(crr_page == last_page){ %>
+                    <!-- <a href="/component?page=<%= crr_page+1%>"><div class="pagenumber" style="display: none;"><%= crr_page +1%></div></a>
+                     <a href="/component?page=<%= crr_page+2%>"><div class="pagenumber" style="display: none;"><%= crr_page +2%></div></a> -->
+                     <a href="/component?page=<%= crr_page + 1%>" class="disable">></a>
+                     
+                    <% } else { %>
+                        <!-- <a href="/component?page=<%= crr_page+1%>"><div class="pagenumber"><%= crr_page +1%></div></a>
+                        <a href="/component?page=<%= crr_page+2%>"><div class="pagenumber"><%= crr_page +2%></div></a> -->
+                        <a href="/component?page=<%= crr_page + 1%>">></a>
+                       
+                <% } %>
+                                        
+
+                    <a href="/component?page=<%= last_page %>">>></a>
+
+        </div>
+    </div>
+
+    
+</body>
+
+</html>

@@ -299,4 +299,60 @@ routes.post('/deleamitersearch',(req,res)=>{
         // console.log(data);  
     })
 })
+
+routes.get('/', (req, res) => {
+    let sql = "select * from student_master LIMIT 30000";
+    let query = connection.query(sql, (err, rows) => {
+        //if (err) throw err;
+        console.log(rows.student_id);
+        res.render('student_view', {
+            student_data: rows
+        });
+    });
+});
+
+
+
+
+routes.get('/component',(req,res)=>{
+    records = process.env.Max_Record;
+    page = req.query.page || 1;
+    max_page = process.env.max_page;
+    let sql = `select * from student_master LIMIT ${records * (page - 1)},${records}`;
+    let query = connection.query(sql,(err,data)=>{
+        res.render('task11/component',{
+            student_data: data,
+            crr_page: +page,
+            last_page : max_page
+        })
+    })
+});
+       
+
+routes.get('/onlycomponent',(req,res)=>{
+    records = process.env.Max_Record;
+    page = req.query.page || 1;
+    max_page = process.env.max_page;
+    res.render('onlycomponent',{
+        crr_page : +page,
+        last_page : max_page
+    })
+});
+
+routes.get('/orderby',(req,res)=>{
+    records = process.env.Max_Record;
+    page = req.query.page || 1;
+    FieldName = req.query.fieldname;
+    max_page = process.env.max_page;
+    
+        let sql = `select * from student_master order by ${FieldName} LIMIT ${records * (page - 1)},${records}`;
+        let query = connection.query(sql,(err,data)=>{
+            res.render('orderby',{
+                student_data: data,
+                crr_page: +page,
+                last_page : max_page,
+                fieldname : FieldName 
+            })
+        })
+}) 
 module.exports = routes;
