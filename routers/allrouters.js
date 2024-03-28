@@ -606,7 +606,9 @@ routes.get('/view',async(req,res)=>{
     
 })
 
-
+routes.get('/timezone',(req,res)=>{
+    res.render('task14/timezone');
+})
 
 
 module.exports = routes;
