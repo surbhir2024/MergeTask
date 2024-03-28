@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/student_view.css">
+    <title>Student_Data</title>
+</head>
+<style>
+    #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 1px;
+    height:2px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  .button {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.container {
+        height: 70px;
+        background-color: #04AA6D;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .col {
+        width: 25%;
+    }
+
+    .col2 {
+        width: 50%;
+    }
+
+    .col3 {
+        width: 25%;
+    }
+
+    a {
+        margin: 10px;
+        text-decoration: none;
+    }
+
+    .disable {
+        pointer-events: none;
+        cursor: none;
+        opacity: 0.5;
+    }
+
+</style>
+
+<body>
+   <center><h1>Surbhi Rank</h1></center>
+    <table id="customers">
+        <caption style="font-size: large;">Student_Data</caption>
+        <tr>
+            <th rowspan="2">StudentId</th>
+            <th rowspan="2">FirstName</th>
+            <th colspan="2">Terminal</th>
+            <th colspan="2">Prilims</th>
+            <th colspan="2">Final</th>
+            <th rowspan="2">TotalMarks</th>
+            <th rowspan="2">Percentage</th>
+            <th rowspan="2">View</th>
+        </tr>
+        <tr>
+            <!-- <th colspan="2" style="background-color: #f2f2f2;"></th> -->
+            <th>Theory</th>
+            <th>Practical</th>
+            <th>Theory</th>
+            <th>Practical</th>
+            <th>Theory</th>
+            <th>Practical</th>
+         </tr>
+         <% let parseobj = JSON.parse(objdata)%>
+         <% let Prilimsth = parseobj.prilimsthmarks%>
+         <% let Prilimspra = parseobj.prilimspramarks%>
+         <% let terminalth = parseobj.Internalthemarks%>
+         <% let terminalpra = parseobj.Internalpramarks%>
+         <% let finalth = parseobj.finalthemarks%>
+         <% let finalpra = parseobj.finalpramarks%>
+         <%for(let i=0;i<Prilimsth.length;i++){%>
+          <tr>
+            <td><%= Prilimsth[i].sid%></td>
+            <td><%= Prilimsth[i].FirstName%></td>
+            <td><%= Prilimsth[i].theoryobtainmarks%></td>
+            <td><%= Prilimspra[i].practicalpriobtainmarks%></td>
+            <td><%= terminalth[i].theoryinterobtainmarks%></td>
+            <td><%= terminalpra[i].prainterobtainmarks%></td>
+            <td><%= finalth[i].theoryfinalobtainmarks%></td>
+            <td><%= finalpra[i].theoryfinalobtainmarks%></td>
+            <td><%= Prilimsth[i].theoryobtainmarks + Prilimspra[i].practicalpriobtainmarks + terminalth[i].theoryinterobtainmarks + 
+            terminalpra[i].prainterobtainmarks + finalth[i].theoryfinalobtainmarks + finalpra[i].theoryfinalobtainmarks %></td>
+            <td><%= (Prilimsth[i].theoryobtainmarks + Prilimspra[i].practicalpriobtainmarks + terminalth[i].theoryinterobtainmarks + 
+              terminalpra[i].prainterobtainmarks + finalth[i].theoryfinalobtainmarks + finalpra[i].theoryfinalobtainmarks)/10 %></td>
+            <td><a href="/view?id=<%= Prilimsth[i].sid%>" class="button">View</a></td>
+         </tr>
+          <%}%>
+        
+          
+    </table>
+    <div class="container">
+      <div class="row">
+          <a href="/studentresult?&page=1"><<</a>
+          <% if(crr_page == 1){ %>
+              <a href="/studentresult?page=<%= crr_page - 1%>" class="disable"><</a>
+              <% } else { %>
+                  <a href="/studentresult?&page=<%= crr_page - 1%>"><</a>
+                  <% } %>
+      
+      
+                    <a href="/studentresult?&page=<%= crr_page%>"><%= crr_page%></a>
+          <% if(crr_page == last_page){ %>
+                      <a href="/studentresult?&page=<%= crr_page + 1%>" class="disable">></a>
+                     <% } else { %>
+                         <a href="/studentresult?&page=<%= crr_page + 1%>">></a>
+                 <% } %>
+                               
+          <a href="/studentresult?&page=<%= last_page %>">>></a>
+         
+      
+      </div>
+      </div> 
+  
+   
+</body>
+
+</html>

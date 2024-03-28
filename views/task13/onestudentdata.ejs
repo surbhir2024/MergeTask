@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One student data</title>
+    <style>
+       #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  .button {
+  background-color: #04AA6D; /* Green */
+  border: none;
+  border-radius: 5px;;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+} 
+    </style>
+</head>
+<body>
+    <% let parseobj = JSON.parse(dataobj1)%>
+    <% let Prilimsth = parseobj.prilimsthmarks%>
+    <% let Prilimspra = parseobj.prilimspramarks%>
+    <% let terminalth = parseobj.Internalthemarks%>
+    <% let terminalpra = parseobj.Internalpramarks%>
+     <% let finalth = parseobj.finalthemarks%>
+     <% let finalpra = parseobj.finalpramarks%>
+     <% let sum = 0%>
+     <h1 class="button">Name : <%=Prilimsth[0].FirstName %></h1>
+    <table id="customers">
+       
+        <tr>
+            <th rowspan="2">SubjectName</th>
+            <td colspan="2">Terminal</td>
+            <td colspan="2">Prilims</td>
+            <td colspan="2">Final</td>
+        </tr>
+        
+        <tr>
+            <th>Theory(30)</th>
+            <th>Practical(20)</th>
+            <th>Theory(40)</th>
+            <th>Practical(10)</th>
+            <th>Theory(70)</th>
+            <th>Practical(30)</th>
+        </tr>
+       
+       
+        <%for(let i=0;i<Prilimsth.length;i++){%>
+           
+            <tr>
+                <td><%= Prilimsth[i].sub_name %></td>
+                <td><%= Prilimsth[i].obtainmarks%></td>
+                <td><%= Prilimspra[i].obtainmarks%></td>
+                <td><%= terminalth[i].obtainmarks%></td>
+                <td><%= terminalpra[i].obtainmarks%></td>
+                <td><%= finalth[i].obtainmarks%></td>
+                <td><%=finalpra[i].obtainmarks%></td>
+                <% sum = sum+Prilimsth[i].obtainmarks + Prilimspra[i].obtainmarks + terminalth[i].obtainmarks +
+                + terminalpra[i].obtainmarks + finalth[i].obtainmarks + finalpra[i].obtainmarks%>
+
+            </tr>
+            <%}%>
+
+            
+                
+            
+    </table>
+    
+    <p class="button">TotalMarks : <%= sum %> </p>
+    <p class="button">Percentage : <%= sum/10%>%</p>
+</body>
+</html>
