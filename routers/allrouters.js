@@ -5,10 +5,13 @@ const routes = express.Router();
 const connection = require('../connection.js')
 const path = require('path');
 const { stat } = require('fs/promises');
+const md5 = require('md5');
 
 routes.get('/',(req,res)=>{
     res.render('home');
 })
+
+
 routes.get('/coocube',(req,res)=>{
     res.render('task1/coocube');
 })

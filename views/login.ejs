@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="./login.css">
+</head>
+<body>
+    <form>
+        
+    <div class="maincontainer">
+    
+    <div class="logincontainer">
+        <h1>Surbhi Rank</h1>
+        <h2>Login</h2>
+        <div class="row">
+           <div><label for="username">Username</label><span class="reqerr"></span></div>
+            <div><input type="text" id="uname" name="uname" class="reqifield"></input><div>
+        </div>
+        <div class="row">
+            <div><label for="pass">Password</label><span class="reqerr"></span></div>
+            <div><input type="text" id="pass" name="pass" class="reqifield"></input></div>
+        </div>
+        <div>
+        <input type="button" name="Login" value="Login" class="button" onclick="validatelogin()">
+    </div>
+    </div>
+    <div class="forgotpass">
+        <a href="./forgotpass">forgot Password</a>
+    </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+       
+          <div class="modal-content">
+         
+            <!-- <span class="close">&times;</span> -->
+            <img src="./right.png" width="50px" height="50px"></img>
+            <p>Congratulations You are successfully Login!!!!</p>
+        </div>
+    </form>
+    <script src="./login.js"></script>
+</body>
+</html>
