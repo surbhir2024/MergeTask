@@ -82,7 +82,7 @@ exports.checklogindata = async function(logindata)
             if(tabledata[0].passwordd === logindata.password && tabledata[0].statuscode == 1)
             {
                 logindata.error = "Success";
-                const token = jwt.sign({ userId: tabledata[0].id }, 'your-secret-key', {
+                const token = jwt.sign({userId: tabledata[0].id}, 'your-secret-key', {
                     expiresIn: '1h',
                     });
                 logindata.token = token;
