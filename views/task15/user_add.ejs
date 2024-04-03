@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= title %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  
+</head>
+
+<body>
+
+<div class="container">
+  <h2><%= title %></h2>
+  <script>
+    function validateform()
+    {
+      var name = document.getElementById('name');
+      var email = document.getElementById('email');
+      var phone = document.getElementById('phoneno');
+      if(name == null && name == "" && email == null && email == "" && phone == null && phone == "")
+      {
+        alert("Some fields are null");
+        return false;
+      }
+    }
+    
+    
+  </script>
+  <form action="/save" method="post" onsubmit="return validateform()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone No:</label>
+      <input type="number" class="form-control" id="phoneno" placeholder="Enter Phone No" name="phone_no">
+    </div>
+    <div class="form-group">
+        <label for="hobbies">hobbies:</label>
+        <input type="checkbox" class="form-control" id="checkbox" name="hobbies" value="dancing"/> Dancing
+        <input type="checkbox" class="form-control" id="checkbox" name="hobbies" value="singing"/> singing
+        <input type="checkbox" class="form-control" id="checkbox" name="hobbies" value="playing"/> playing
+        <input type="checkbox" class="form-control" id="checkbox" name="hobbies" value="chess"/> chess
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+</body>
+
+</html>
