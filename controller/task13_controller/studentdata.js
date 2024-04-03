@@ -1,4 +1,4 @@
-const connection = require('../../connection/connection.js');
+const connection = require('../../config/connection.js');
 
 function datadisplay(req,res)
 {

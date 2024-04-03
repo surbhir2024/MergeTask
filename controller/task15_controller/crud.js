@@ -1,4 +1,4 @@
-const connection = require('../../connection/connection.js');
+const connection = require('../../config/connection.js');
 
 function showuser(req,res)
 {
@@ -49,8 +49,13 @@ function updatepost(req,res){
     const userid = req.body.id;
     let sql = "update users SET user_name='"+req.body.name+"', email='"+req.body.email+"',phoneno = '"+req.body.phone_no+"',hobbies ='"+ req.body.hobbies+"' where id ="+userid;
     connection.query(sql,(err,results)=>{
-        if(err) throw err;
-        res.redirect('/showuser');
+        try {
+            if(err) throw err;
+            res.redirect('/showuser');
+        } catch (err) {
+            console.log(err);
+        }
+        
     });
 }
 
@@ -58,8 +63,13 @@ function deletepost(req,res){
     const userid = req.params.userId;
     let sql = `delete from users where id = ${userid}`;
     connection.query(sql,(err,result)=>{
-        if(err) throw err;
-        res.redirect('/showuser');
+        try {
+            if(err) throw err;
+            res.redirect('/showuser');
+        } catch (err) {
+            console.log(err);
+        }
+        
     });
 }
 module.exports = {showuser,addusers,editusers,updatepost,deletepost};

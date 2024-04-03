@@ -1,4 +1,4 @@
-const connection = require('../../connection/connection.js');
+const connection = require('../../config/connection.js');
 function dynamicgrid(req,res)
 {
     let url = req.url;

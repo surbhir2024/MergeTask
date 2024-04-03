@@ -1,4 +1,4 @@
-const connection = require('../../connection/connection.js')
+const connection = require('../../config/connection.js')
 
 function deleamitersearch(req, res) {
     records = process.env.Max_Record;

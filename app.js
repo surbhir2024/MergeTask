@@ -1,11 +1,13 @@
 const path = require('path');
 const express = require('express');
-const ejs = require('ejs');
-
 const bodyparser = require('body-parser');
 const portfinder = require('portfinder');
+const cors = require('cors');
 const app = express();
+// const cookieParser = require('cookie-parser');
 require('dotenv').config();
+app.use(cors());
+// app.use(cookieParser());
 
 const dynamic = require('./routers/allrouters.js');
 // const pagignation = require('./pagignation/routers/pagignationroute.js')

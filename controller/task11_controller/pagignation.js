@@ -1,4 +1,4 @@
-const connection = require('../../connection/connection.js')
+const connection = require('../../config/connection.js')
 function studentview(req,res){
     let sql = "select * from student_master LIMIT 30000";
     connection.query(sql, (err, rows) => {
