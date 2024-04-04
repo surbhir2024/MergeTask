@@ -38,20 +38,18 @@ function logindatacheck(){
         })
         .then(dataobj => {
             console.log(dataobj);
-            showresult(dataobj.error,dataobj.token);
+            showresult(dataobj.error);
         })
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
         });
 
 }
-function  showresult(resobj,token)
+function  showresult(resobj)
 {
     console.log(resobj);
     if(resobj === "Success")
     {
-    //    document.getElementById('myModal').style.display = "block";
-    //    document.cookie = `Access_tocken=${token}; expires=Thu,  Dec 2024 12:00:00 UTC`
         window.location.href = 'http://localhost:8000/home';
     }
     if(resobj === "Error")

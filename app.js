@@ -4,14 +4,13 @@ const bodyparser = require('body-parser');
 const portfinder = require('portfinder');
 const cors = require('cors');
 const app = express();
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 require('dotenv').config();
 app.use(cors());
-// app.use(cookieParser());
+app.use(cookieParser());
 
 const dynamic = require('./routers/allrouters.js');
-// const pagignation = require('./pagignation/routers/pagignationroute.js')
-// app.use(pagignation)
+
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

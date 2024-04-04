@@ -9,7 +9,14 @@ const {studentview,pagignationcomponents,orderbycomponents} = require('../contro
 const {datadisplay,studentresult,view} = require('../controller/task13_controller/studentdata.js');
 const { showuser, addusers, editusers, updatepost, deletepost } = require('../controller/task15_controller/crud.js');
 
-routes.post('/registerdata', async(req, res) => {
+routes.get('/registerpage',(req,res)=>{
+    res.render('reglogin/reg')
+})
+routes.get('/login',(req,res)=>{
+    res.render('reglogin/login')
+})
+
+routes.post('/registerdata',async(req, res) => {
     var userdata = req.body;
     var data = controler.generatesalt(userdata)
     res.json(await data);
@@ -22,8 +29,9 @@ routes.post('/updatepass',async(req,res)=>{
 routes.post('/logindata',async(req,res)=>{
     let logindata = req.body;
     let loginres = await controler.checkpass(logindata);
-    return res.cookie('cokkieName',loginres.token, { maxAge: 900000, httpOnly: true }).status(200).json(loginres);
-    // res.json(loginres);
+    // const abc = loginres.token;
+    res.cookie('accesstoken',loginres.token, { maxAge: 900000, httpOnly: true })
+    .status(200).json(loginres) 
 })
 routes.get('/',(req,res)=>{
     res.render('frontpage');
@@ -57,53 +65,53 @@ routes.get('/hirex',verifyJWT,(req,res)=>{
     res.render('task8/hirex');
 })
 routes.get('/homegreedsearch',verifyJWT,(req,res)=>{
-    res.render('task9/home')
+    res.render('task9/home');
 })
 
 
-routes.get('/form',dynamicgrid);
-routes.post('/form',dynamicgridpost);
+routes.get('/form',verifyJWT,dynamicgrid);
+routes.post('/form',verifyJWT,dynamicgridpost);
 //searching routes
-routes .get('/search',searchroute)
-routes.post('/search',searchroutpost);
+routes .get('/search',verifyJWT,searchroute)
+routes.post('/search',verifyJWT,searchroutpost);
 
 // delemeter search routes
 
-routes.get('/deleamitersearch',deleamitersearch);
-routes.post('/deleamitersearch',deleamitersearchpost)
+routes.get('/deleamitersearch',verifyJWT,deleamitersearch);
+routes.post('/deleamitersearch',verifyJWT,deleamitersearchpost)
 
 //pagignation
-routes.get('/simpleview',studentview);
-routes.get('/component',pagignationcomponents);
-routes.get('/orderby',orderbycomponents) 
+routes.get('/simpleview',verifyJWT,studentview);
+routes.get('/component',verifyJWT,pagignationcomponents);
+routes.get('/orderby',verifyJWT,orderbycomponents) 
 
 //jsonapi routes
-routes.get('/post',(req,res)=>{
+routes.get('/post',verifyJWT,(req,res)=>{
     res.render('task12/post');
 })
-routes.get('/post/comment',(req,res)=>{
+routes.get('/post/comment',verifyJWT,(req,res)=>{
     res.render('task12/comment');
 })
 
 //attandance 
-routes.get('/datadisplay',datadisplay);
-routes.get('/studentresult',studentresult);
+routes.get('/datadisplay',verifyJWT,datadisplay);
+routes.get('/studentresult',verifyJWT,studentresult);
 routes.get('/view',view);
 
-routes.get('/timezone',(req,res)=>{
+routes.get('/timezone',verifyJWT,(req,res)=>{
     res.render('task14/timezone');
 })
 
-routes.get('/showuser',showuser);
-routes.get('/add', (req, res) => {
+routes.get('/showuser',verifyJWT,showuser);
+routes.get('/add',verifyJWT,(req, res) => {
     res.render('task15/user_add', {
         title: 'Crud operation'
     });
 });
-routes.post('/save',addusers);
-routes.get('/edit/:userId',editusers);
-routes.post('/update',updatepost);
-routes.get('/delete/:userId',deletepost);
+routes.post('/save',verifyJWT,addusers);
+routes.get('/edit/:userId',verifyJWT,editusers);
+routes.post('/update',verifyJWT,updatepost);
+routes.get('/delete/:userId',verifyJWT,deletepost);
 
 
 
