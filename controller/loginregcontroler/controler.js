@@ -1,7 +1,6 @@
 let model = require(`../../model/model.js`);
 const md5 = require('md5');
 
-
 let salt = '';
 exports.generatesalt = async function(data) {
     length = 4;

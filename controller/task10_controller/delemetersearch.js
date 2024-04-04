@@ -1,6 +1,6 @@
 const connection = require('../../config/connection.js')
 
-function deleamitersearch(req, res) {
+function deleamitersearch(req, res){
     records = process.env.Max_Record;
     page = req.query.page || 1;
     max_page = process.env.max_page;
@@ -18,7 +18,6 @@ function deleamitersearch(req, res) {
         } catch (err) {
             console.log(err)
         }
-
     })
 }
 
@@ -37,14 +36,12 @@ function deleamitersearchpost(req, res) {
     let delimeters2 = [];
     let arr3 = [];
 
-
     let delemeters = ["%", "^", "$", "{", "+", "-"];
     for (var j = 0; j < dataparam.length; j++) {
         if (delemeters.includes(dataparam[j])) {
             delimeters2.push(dataparam[j]);
         }
     }
-
 
     for (var i = 1; i < data1.length; i++) {
         arr3.push(delimeters2[i - 1].concat(data1[i]));
@@ -72,7 +69,6 @@ function deleamitersearchpost(req, res) {
         else {
             msg += "data wrong"
         }
-
     }
 
     sql = `select * from Student_master where FirstName like '%${dataobj.Firstname.join("%' or FirstName like '%").substring(1)}%'
@@ -90,7 +86,6 @@ function deleamitersearchpost(req, res) {
         } catch (err) {
             console.log(err)
         }
-
     })
 }
 module.exports = { deleamitersearch, deleamitersearchpost};

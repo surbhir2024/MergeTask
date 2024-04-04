@@ -7,12 +7,12 @@ function studentview(req,res){
             res.render('task11/student_view', {
                 student_data: rows
             });
-        } catch (err) {
+        } catch (err){
             console.log(err)
         }
-        
     })
 }
+
 function pagignationcomponents(req,res){
     records = process.env.Max_Record;
     page = req.query.page || 1;
@@ -26,13 +26,12 @@ function pagignationcomponents(req,res){
             crr_page: +page,
             last_page : max_page
         })
-            
         } catch (err) {
             console.log(err);
         }
-        
     })
 }
+
 function orderbycomponents(req,res){
     records = process.env.Max_Record;
     page = req.query.page || 1;

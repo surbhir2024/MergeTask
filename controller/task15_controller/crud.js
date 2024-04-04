@@ -45,6 +45,7 @@ function editusers(req,res){
         }
     });
 }
+
 function updatepost(req,res){
     const userid = req.body.id;
     let sql = "update users SET user_name='"+req.body.name+"', email='"+req.body.email+"',phoneno = '"+req.body.phone_no+"',hobbies ='"+ req.body.hobbies+"' where id ="+userid;

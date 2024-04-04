@@ -1,13 +1,11 @@
 const connection = require('../../config/connection.js');
-function dynamicgrid(req,res)
-{
+function dynamicgrid(req,res){
     let url = req.url;
     let query = req.query.query;
     let page = req.query.page;
 
     if (query) {
     url = url.split("?");
-    console.log(url);
     let newQuery = query;
     let length12;
     if (query.indexOf("LIMIT")) newQuery = query.substring(0, query.length - 11);
@@ -32,15 +30,12 @@ function dynamicgrid(req,res)
         }
         
     });
-
     }else{
         res.render('task9/dynamic',{fileds:false,data:false,query:false});
     }
-
 }
 
-function dynamicgridpost(req,res)
-{
+function dynamicgridpost(req,res){
     const query = req.body.query;
     let page = req.query.page || 1;
     let url = req.url;
@@ -75,8 +70,7 @@ let search = function(res,data,page,max_page,fileds){
     })
 }
 
-function searchroute(req,res)
-{
+function searchroute(req,res){
     records = process.env.Max_Record;
     page = req.query.page || 1;
     max_page = process.env.max_page;
@@ -93,12 +87,10 @@ function searchroute(req,res)
         } catch (err) {
             console.log(err)
         }
-       
     })    
 }
 
-function searchroutpost(req,res)
-{
+function searchroutpost(req,res){
     let records = process.env.Max_Record;
     let page = req.query.page || 1;
     let max_page = process.env.max_page;
@@ -108,11 +100,8 @@ function searchroutpost(req,res)
     let city = req.body.city;
     let state1 = req.body.state;
     let dob = req.body.dob;
-    
-
     let sql;
-    if(id != undefined && id != "")
-    {
+    if(id != undefined && id != ""){
         sql = `select * from Student_master where student_id = ${id} LIMIT ${records * (page - 1)},${records}`;
         connection.query(sql,(err,data,fileds)=>{
             if(err) throw err;
@@ -135,16 +124,13 @@ function searchroutpost(req,res)
             
           
         })  
-         
     }
     else{
         res.render('task9/search',{
             data: false,
 
         })
-          
     }
-        
 }
 
 module.exports = {dynamicgrid,dynamicgridpost,searchroute,searchroutpost}
