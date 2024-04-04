@@ -32,8 +32,4 @@ portfinder.getPort(function(err,port){
     }
 })
 
-//routes
-
-
-
 app.use(dynamic);

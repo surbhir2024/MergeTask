@@ -78,7 +78,7 @@ exports.checklogindata = async function (logindata) {
                     logindata.password = md5(logindata.pass);
                     if (tabledata[0].passwordd === logindata.password && tabledata[0].statuscode == 1) {
                         logindata.error = "Success";
-                        const secretkey = process.env.WT_SECRET_KEY
+                        const secretkey = process.env.JWT_SECRET_KEY
                         const token = jwt.sign({ userId: tabledata[0].id }, secretkey, {
                             expiresIn: '1h',
                         });

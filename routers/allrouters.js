@@ -17,19 +17,18 @@ routes.get('/login',(req,res)=>{
 })
 
 routes.post('/registerdata',async(req, res) => {
-    var userdata = req.body;
-    var data = controler.generatesalt(userdata)
+    let userdata = req.body;
+    let data = controler.generatesalt(userdata)
     res.json(await data);
 })
 routes.post('/updatepass',async(req,res)=>{
-    passdata = req.body
-    passres = controler.generatehashpass(passdata);
+    let passdata = req.body
+    let passres = controler.generatehashpass(passdata);
     res.json(passres);
 })
 routes.post('/logindata',async(req,res)=>{
     let logindata = req.body;
     let loginres = await controler.checkpass(logindata);
-    // const abc = loginres.token;
     res.cookie('accesstoken',loginres.token, { maxAge: 900000, httpOnly: true })
     .status(200).json(loginres) 
 })
