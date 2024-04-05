@@ -138,7 +138,7 @@ li{
     gap:15px;
 }
 .image1{
-    background-image: url(./Image.png);
+    background-image: url(assets/Image.png);
     background-repeat: no-repeat;
     color: white;
     height: 500px;
@@ -152,7 +152,7 @@ li{
 }
 
 .image2{
-    background-image: url(./Image2.png);
+    background-image: url(assets/Image2.png);
     background-repeat: no-repeat;
     color: white;
     height: 500px;

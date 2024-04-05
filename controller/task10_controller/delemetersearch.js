@@ -73,8 +73,8 @@ function deleamitersearchpost(req, res) {
 
     sql = `select * from Student_master where FirstName like '%${dataobj.Firstname.join("%' or FirstName like '%").substring(1)}%'
     and LastName like '%${dataobj.Lastname.join("%' or Lastname like '%").substring(1)}%' and 
-    City like '%${dataobj.city.join("%'or Lastname like '%").substring(1)}%' and State like '%${dataobj.state.join("%' or Lastname like '%").substring(1)}%' and 
-    Zipcode like '%${dataobj.Zipcode.join("%' or Lastname like '%").substring(1)}%' and Email like '%${dataobj.email.join("%' or Lastname like '%").substring(1)}%'`;
+    City like '%${dataobj.city.join("%'or City like '%").substring(1)}%' and State like '%${dataobj.state.join("%' or State like '%").substring(1)}%' and 
+    Zipcode like '%${dataobj.Zipcode.join("%' or Zipcode like '%").substring(1)}%' and Email like '%${dataobj.email.join("%' or Email like '%").substring(1)}%'`;
     connection.query(sql, (err, data, fileds) => {
         try {
             if (err) throw err;
@@ -88,4 +88,4 @@ function deleamitersearchpost(req, res) {
         }
     })
 }
-module.exports = { deleamitersearch, deleamitersearchpost};
+module.exports = {deleamitersearch, deleamitersearchpost};

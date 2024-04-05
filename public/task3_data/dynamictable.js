@@ -1,17 +1,18 @@
 function myFunction() {
-  table =document.getElementById('tableid');
-  var row = table.rows.length;
-  var cell = table.rows[row-1].cells.length;
-   var insertrow = table.insertRow(-1);
+  let table =document.getElementById('tableid');
+  let row = table.rows.length;
+  let cell = table.rows[row-1].cells.length;
+  let insertrow = table.insertRow(-1);
 
    for(var i=0;i<cell;i++)
    {
       insertrow.insertCell(i);
    }
-  }
-  function removeRow() {
-      table =document.getElementById('tableid');
-      var row = table.rows.length;
+}
+
+function removeRow() {
+      let table =document.getElementById('tableid');
+      let row = table.rows.length;
       if(row>2){
           if(confirm("Are you Sure"))
           {
@@ -22,10 +23,7 @@ function myFunction() {
   }
   
 function AddColumn(){
-  table =document.getElementById('tableid');
-  var row = table.rows.length;
-  var cell = table.rows[row-1].cells.length;
-  var rows = document.getElementsByTagName('tr');
+  let rows = document.getElementsByTagName('tr');
   for(var i=0;i<rows.length;i++)
   {
       rows[i].insertCell(-1);
@@ -33,10 +31,7 @@ function AddColumn(){
 }
 
 function RemoveColumn(){
-  table =document.getElementById('tableid');
-  var row = table.rows.length;
-  var cell = table.rows[row-1].cells.length;
-  var rows = document.getElementsByTagName('tr');
+  let rows = document.getElementsByTagName('tr');
   if(rows[0].cells.length>2){
       for(var i=0;i<rows.length;i++)
       {

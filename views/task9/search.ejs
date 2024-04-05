@@ -68,31 +68,31 @@
             <%if(data.length >19){%>
                 <div class="container">
                     <div class="row">
-                        <a href="task9/search?page=1"><<</a>
+                        <a href="/search?page=1"><<</a>
                         <% if(crr_page == 1){ %>
-                           <a href="task9/search?page=<%= crr_page - 1%>" class="disable"><</a>
+                           <a href="/search?page=<%= crr_page - 1%>" class="disable"><</a>
                            <% } else { %>
-                               <a href="task9/search?page=<%= crr_page - 1%>"><</a>
+                               <a href="/search?page=<%= crr_page - 1%>"><</a>
                                 <% } %>
            
            
-                                 <a href="task9/search?page=<%= crr_page%>"><div class="pagenumber"><%= crr_page%></div></a>
+                                 <a href="/search?page=<%= crr_page%>"><div class="pagenumber"><%= crr_page%></div></a>
                                  
            
                             <% if(crr_page == last_page){ %>
                                 <!-- <a href="/component?page=<%= crr_page+1%>"><div class="pagenumber" style="display: none;"><%= crr_page +1%></div></a>
                                  <a href="/component?page=<%= crr_page+2%>"><div class="pagenumber" style="display: none;"><%= crr_page +2%></div></a> -->
-                                 <a href="task9/search?page=<%= crr_page + 1%>" class="disable">></a>
+                                 <a href="/search?page=<%= crr_page + 1%>" class="disable">></a>
                                 
                                 <% } else { %>
                                     <!-- <a href="/component?page=<%= crr_page+1%>"><div class="pagenumber"><%= crr_page +1%></div></a>
                                     <a href="/component?page=<%= crr_page+2%>"><div class="pagenumber"><%= crr_page +2%></div></a> -->
-                                    <a href="task9/search?page=<%= crr_page + 1%>">></a>
+                                    <a href="/search?page=<%= crr_page + 1%>">></a>
                                   
                            <% } %>
                                                    
            
-                                <a href="task9/search?page=<%= last_page %>">>></a>
+                                <a href="/search?page=<%= last_page %>">>></a>
            
                     </div>
            </div>

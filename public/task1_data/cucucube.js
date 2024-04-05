@@ -1,11 +1,10 @@
 var score = 1;
     function randomcell() {
-        var table = document.getElementById('tableid');
         let tdque = document.querySelectorAll('td');
         let RanCell = Math.floor(Math.random() * tdque.length);
 
-        var letters = '0123456789ABCDEF';
-        var color = '#';
+        let letters = '0123456789ABCDEF';
+        let color = '#';
         for (var i = 0; i < 6; i++) {
             color += letters[Math.floor(Math.random() * 16)];
         }
@@ -21,7 +20,7 @@ var score = 1;
     }
 
     function AddColumnrow() {
-        var table = document.getElementById('tableid');
+        let table = document.getElementById('tableid');
         if (table.rows.length < 12) {
 
             document.querySelectorAll('tr').forEach(row => {

@@ -1,6 +1,6 @@
 
 function openLanguage(evt, cityName) {
-    var i, tabcontent, tablinks;
+    let i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("word");
     for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = "none";
@@ -13,15 +13,13 @@ function openLanguage(evt, cityName) {
     evt.currentTarget.className += " active";
   }
 
-  // var button = document.getElementById("slide");
   function slide() {
-      var container = document.getElementById('about-card-row');
+      let container = document.getElementById('about-card-row');
       container.scrollLeft += 100;
     }
 
-  // var back = document.getElementById('slideback');
   function slideback(){
-      var container = document.getElementById('about-card-row');
+      let container = document.getElementById('about-card-row');
       document.getElementById('about-card-row');
       container.scrollLeft -= 100;
 
